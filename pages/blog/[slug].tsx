@@ -9,6 +9,7 @@ import Container from 'components/Container';
 import slugify from 'slugify';
 import ArticleList from 'components/ArticleList';
 import siteData from 'data/siteData';
+import { addDashToSpace } from 'utils/toSlug';
 
 const ArticlePage = ({
   content,
@@ -20,7 +21,8 @@ const ArticlePage = ({
 }) => {
   const publishedOn = getLocalizedDate(publishedDate);
 
-  const slug = slugify(title).toLowerCase();
+  // const slug = slugify(title).toLowerCase();
+  const slug = addDashToSpace(title)
 
   // const ogImage = `https://www.phung.io/api/og-image?title=${encodeURIComponent(
   //   title
@@ -40,22 +42,22 @@ const ArticlePage = ({
         ogUrl={`/blog/${slug}`}
       >
         <div>
-          <div className="px-6 py-16 pb-48 mx-auto -mb-48 text-center bg-gray-100 md:pb-96 md:-mb-96">
+          <div className="px-6 py-16 pb-48 mx-auto -mb-48 text-center md:pb-80 md:-mb-80 max-w-4xl">
             <div className="max-w-3xl mx-auto">
-              <div className="flex items-center justify-center mb-2 space-x-2 text-sm text-gray-500">
-                <div className="">{publishedOn}</div>
-              </div>
-              <div className="font-extrabold tracking-tight text-gray-900 text-w-4xl sm:text-4xl">
+              <div className="font-extrabold tracking-tight text-w-4xl text-xl">
                 {title}
               </div>
-              <div className="max-w-3xl mx-auto mt-3 text-xl leading-8 text-gray-500 sm:mt-4">
+              <div className="flex items-center justify-center mb-2 space-x-2 text-sm text-gray-500 dark:text-white">
+                <div className="">{publishedOn}</div>
+              </div>
+              <div className="max-w-4xl mx-auto mt-3 md:text-xl leading-8 text-gray-500 dark:text-gray-300 sm:mt-4">
                 {summary}
               </div>
             </div>
           </div>
 
-          <div className="max-w-5xl px-6 mx-auto my-16 md:px-8">
-            <img className="object-cover w-full rounded-xl aspect-video" src={coverImage} />
+          <div className="max-w-4xl px-6 mx-auto mt-6 md:px-8">
+            <img className="object-cover w-full mx-auto aspect-video" src={coverImage} />
           </div>
           <div className="max-w-4xl px-6 mx-auto mb-24 space-y-8 md:px-8">
             {content.map(block => (
@@ -65,9 +67,9 @@ const ArticlePage = ({
           <div className="py-12 border-t">
             <Container>
               <div className="flex items-center justify-between my-8">
-                <div className="text-3xl font-bold text-gray-900">Latest articles</div>
+                <div className="text-3xl font-bold text-gray-900 dark:text-white">Latest articles</div>
                 <Link href="/">
-                  <span className="font-semibold text-gray-900 cursor-pointer">
+                  <span className="font-semibold text-gray-900 dark:text-white cursor-pointer">
                     More articles ➜
                   </span>
                 </Link>
@@ -103,8 +105,9 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params: { slug } }) => {
   const data = await getAllArticles(process.env.BLOG_DATABASE_ID);
-
+  // console.log(data)
   const page = getArticlePage(data, slug);
+  // console.log(page)
   const result = await getArticlePageData(page, slug, process.env.BLOG_DATABASE_ID);
 
   return {

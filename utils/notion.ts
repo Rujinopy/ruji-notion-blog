@@ -1,5 +1,6 @@
 import { Client, LogLevel } from '@notionhq/client';
 import slugify from 'slugify';
+import { addDashToSpace } from './toSlug';
 
 const notion = new Client({
   auth: process.env.NOTION_SECRET
@@ -38,8 +39,8 @@ const mapArticleProperties = article => {
     categories:
       properties?.categories?.multi_select.map((category: any) => category.name) || [],
     author: {
-      name: properties.Author.created_by.name,
-      imageUrl: properties.Author.created_by.avatar_url
+      name: properties.Author.created_by.id,
+      imageUrl: "https://scontent.fkkc2-1.fna.fbcdn.net/v/t31.18172-1/17761207_1272009869544033_1007768887743833283_o.jpg?stp=c60.0.240.240a_dst-jpg_p240x240&_nc_cat=106&ccb=1-7&_nc_sid=7206a8&_nc_ohc=A4c6UFLONMgAX-FtQIa&_nc_ht=scontent.fkkc2-1.fna&oh=00_AfD2xg3celt4gdHBeDmGUfMiyW_wyrnhmgry7j_ZASTbBw&oe=653CD848"
     },
     coverImage:
       properties?.coverImage?.files[0]?.file?.url ||
@@ -52,10 +53,9 @@ const mapArticleProperties = article => {
 
 export const convertToArticleList = (tableData: any) => {
   let categories: string[] = [];
-
+  
   const articles = tableData.map((article: any) => {
     const { properties } = article;
-
     properties?.categories?.multi_select?.forEach((category: any) => {
       const { name } = category;
       if (!categories.includes(name) && name) {
@@ -98,12 +98,18 @@ export const getMoreArticlesToSuggest = async (databaseId, currentArticleTitle) 
 };
 
 export const getArticlePage = (data, slug) => {
+  console.log(slug);
+  
   const response = data.find(result => {
     if (result.object === 'page') {
-      const resultSlug = slugify(
-        result.properties.title.title[0].plain_text
-      ).toLowerCase();
+      // console.log(addDashToSpace(result.properties.title.title[0].plain_text));
+      const resultSlug = addDashToSpace(result.properties.title.title[0].plain_text)
+      
       return resultSlug === slug;
+      // const resultSlug = slugify(
+      //   result.properties.title.title[0].plain_text
+      // ).toLowerCase();
+      // return resultSlug === slug;
     }
     return false;
   });

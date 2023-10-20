@@ -1,6 +1,6 @@
 const siteData = {
-  title: 'Starter Notion blog for Nextjs with Tailwind',
-  author: 'Notion Blog Starter',
+  title: 'Rujinopy&apos;s Blog',
+  author: 'Ruji',
   headerTitle: 'Nextjs Notion Blog Starter',
   profileUrl: '/nextjs-logo.png',
   headerDescription: 'Starter Notion blog for Nextjs with Tailwind',
@@ -8,10 +8,10 @@ const siteData = {
   language: 'en-us',
   locale: 'en-US',
   socialBanner: 'https://nextjs-notion-blog-starter.vercel.app/preview/1.jpg',
-  github: 'https://github.com/tuanphungcz/nextjs-notion-blog-starter',
-  twitter: 'https://github.com/tuanphungcz/nextjs-notion-blog-starter',
+  github: 'https://github.com/Rujinopy',
+  twitter: 'https://twitter.com/Rujinopy',
   websiteUrl: 'https://nextjs-notion-blog-starter.vercel.app',
-  linkedin: 'https://github.com/tuanphungcz/nextjs-notion-blog-starter'
+  linkedin: 'https://instagram.com/Rujinopy',
 };
 
 export default siteData;

@@ -5,8 +5,13 @@ module.exports = {
     './layouts/**/*.tsx',
     './lib/**/*.tsx'
   ],
+  darkMode: ["class"],
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        'anuphan': ['Anuphan', 'sans-serif']
+      }
+    }
   },
   plugins: [require('@tailwindcss/line-clamp')]
 };

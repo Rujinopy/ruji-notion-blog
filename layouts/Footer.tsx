@@ -4,7 +4,7 @@ import siteData from 'data/siteData';
 
 export default function Footer() {
   return (
-    <footer className="py-16 bg-white border-t">
+    <footer className="py-16 bg-white dark:bg-black border-t">
       <Container>
         <div className="md:flex md:items-center md:justify-between">
           <Socials />
