@@ -91,7 +91,7 @@ export const getStaticPaths = async () => {
     if (result.object === 'page') {
       paths.push({
         params: {
-          slug: slugify(result.properties.title.title[0].plain_text).toLowerCase()
+          slug: slugify(result.properties.title.title[0].plain_text).toLowerCase() || "404"
         }
       });
     }
