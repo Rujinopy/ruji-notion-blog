@@ -88,15 +88,17 @@ export const getStaticPaths = async () => {
   const data: any = await getAllArticles(process.env.BLOG_DATABASE_ID);
 
   data.forEach(result => {
+    console.log(result.properties.title)
     if (result.object === 'page') {
       paths.push({
         params: {
-          slug: slugify(result.properties.title.title[0].plain_text).toLowerCase() || "404"
+          slug:  addDashToSpace(result.properties.title.title[0].plain_text) || "404"
         }
       });
     }
   });
 
+  // console.log(paths)
   return {
     paths,
     fallback: 'blocking'
