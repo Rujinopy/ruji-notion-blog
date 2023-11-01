@@ -14,10 +14,6 @@ import Head from 'next/head'
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Head>
-        <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;700&display=swap" rel="stylesheet" />
-      </Head>
-
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         {process.env.NEXT_PUBLIC_UMAMI_ID &&
           process.env.NEXT_PUBLIC_UMAMI_URL &&

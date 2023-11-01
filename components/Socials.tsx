@@ -2,7 +2,7 @@ import siteData from 'data/siteData';
 import Image from 'next/image';
 import UseAnimations from 'react-useanimations';
 import github from 'react-useanimations/lib/github';
-import linkedin from 'react-useanimations/lib/linkedin';
+import instagram from 'react-useanimations/lib/instagram';
 import twitter from 'react-useanimations/lib/twitter';
 
 const socials = [
@@ -12,9 +12,9 @@ const socials = [
     animation: twitter
   },
   {
-    name: 'LinkedIn',
-    href: siteData.linkedin,
-    animation: linkedin
+    name: 'Instagram',
+    href: siteData.instagram,
+    animation: instagram
   },
   {
     name: 'GitHub',
@@ -30,12 +30,12 @@ export default function Socials() {
         <a
           key={item.name}
           href={item.href}
-          className="transform  filter hover:contrast-50 dark:bg-white darl rounded-full p-1"
+          className="transform filter hover:contrast-50 p-1"
           target="_blank"
           rel="noreferrer"
         >
           <span className="sr-only">{item.name}</span>
-          <UseAnimations animation={item.animation} strokeColor="#333" />
+          <UseAnimations animation={item.animation} strokeColor="#FFFFFF" />
         </a>
       ))}
     </div>

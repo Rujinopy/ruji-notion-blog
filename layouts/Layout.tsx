@@ -21,7 +21,7 @@ export function Layout(props) {
     <>
       <MetaHead {...metaHeadProps} />
       <Header />
-      <div className="pt-14">{children}</div>
+      <div className="pt-14 bg-zinc-50 dark:bg-zinc-900">{children}</div>
       {FORM_ID && API_KEY && <Subscribe />}
 
       <Footer />

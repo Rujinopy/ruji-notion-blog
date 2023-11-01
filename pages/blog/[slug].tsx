@@ -2,11 +2,9 @@ import { Fragment } from 'react';
 import Link from 'next/link';
 import { getAllArticles, getArticlePage, getArticlePageData } from 'utils/notion';
 import { Layout } from 'layouts/Layout';
-import Image from 'next/image';
 import { renderBlocks } from 'components/notionBlocks/renderBlocks';
 import getLocalizedDate from 'utils/getLocalizedDate';
 import Container from 'components/Container';
-import slugify from 'slugify';
 import ArticleList from 'components/ArticleList';
 import siteData from 'data/siteData';
 import { addDashToSpace } from 'utils/toSlug';
@@ -92,13 +90,12 @@ export const getStaticPaths = async () => {
     if (result.object === 'page') {
       paths.push({
         params: {
-          slug:  addDashToSpace(result.properties.title.title[0].plain_text) || "404"
+          slug: addDashToSpace(result.properties.title.title[0].plain_text) || "404"
         }
       });
     }
   });
 
-  // console.log(paths)
   return {
     paths,
     fallback: 'blocking'
@@ -107,9 +104,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params: { slug } }) => {
   const data = await getAllArticles(process.env.BLOG_DATABASE_ID);
-  // console.log(data)
   const page = getArticlePage(data, slug);
-  // console.log(page)
   const result = await getArticlePageData(page, slug, process.env.BLOG_DATABASE_ID);
 
   return {

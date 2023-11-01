@@ -98,7 +98,7 @@ export const getMoreArticlesToSuggest = async (databaseId, currentArticleTitle) 
 };
 
 export const getArticlePage = (data, slug) => {
-  console.log(slug);
+  // console.log(slug);
   
   const response = data.find(result => {
     if (result.object === 'page') {
