@@ -44,7 +44,7 @@ export default function Index({ articles, categories }: any) {
             <h1 className='text-center text-5xl transition-all font-anuphan'>Ruji Blog</h1>
             <h1 className={`text-center text-3xl font-anuphan transition-all mt-2 hover:mt-8`}>สวัสดีจ้า</h1>
           </div>
-          <div className="flex flex-wrap justify-center gap-4 mt-8 dark:bg-zinc-900 pb-8">
+          <div className="flex flex-wrap justify-center gap-4 mt-8 dark:bg-neutral-900 pb-8">
             {categories.map(tag => (
               <Category
                 tag={tag}
@@ -54,7 +54,7 @@ export default function Index({ articles, categories }: any) {
               />
             ))}
           </div>
-          <div className="mb-8 text-3xl font-bold text-gray-900 dark:text-white dark:bg-zinc-900">
+          <div className="mb-8 text-3xl font-bold text-gray-900 dark:text-white dark:bg-neutral-900">
             {!selectedTag ? 'Latest articles' : `${selectedTag} articles`}
           </div>
           <ArticleList articles={getCurrentPageArticles()} />

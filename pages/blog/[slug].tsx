@@ -39,7 +39,7 @@ const ArticlePage = ({
         date={new Date(publishedDate).toISOString()}
         ogUrl={`/blog/${slug}`}
       >
-        <div>
+        <div className='max-w-4xl mx-auto'>
           <div className="px-6 py-16 pb-48 mx-auto -mb-48 text-center md:pb-80 md:-mb-80 max-w-4xl">
             <div className="max-w-3xl mx-auto">
               <div className="font-extrabold tracking-tight text-w-4xl text-xl">

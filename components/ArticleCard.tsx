@@ -6,8 +6,6 @@ type Props = {
   article: Article;
 };
 
-
-
 export default function ArticleCard({ article }: Props) {
   // const slug = slugify(article.title, {
   //   locale: 'th',
@@ -40,7 +38,7 @@ export default function ArticleCard({ article }: Props) {
             />
           </div>
         </div>
-        <div className="flex flex-col justify-between flex-1 py-4 bg-white dark:bg-zinc-900" >
+        <div className="flex flex-col justify-between flex-1 py-4 bg-white dark:bg-neutral-900" >
           <div className="flex-1">
             <p className="text-xl font-semibold text-gray-900 dark:text-white font-anuphan">{article.title}</p>
             <p className="mt-3 text-base text-gray-500 dark:text-gray-300  line-clamp-2">{article.summary}</p>

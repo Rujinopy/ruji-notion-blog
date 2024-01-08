@@ -24,7 +24,7 @@ const LinkItem = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
-    <div className="fixed z-10 w-full bg-white dark:bg-zinc-900 ">
+    <div className="fixed z-10 w-full bg-white dark:bg-neutral-900">
       <Container>
         <div className="flex justify-between w-full py-4 ">
           <Link href="/" passHref>
@@ -37,7 +37,7 @@ export default function Navbar() {
           <div className="md:flex space-x-5 hidden">
             <ThemeSwitcher />
           </div>
-          <div className="lg:hidden md:hidden ">
+          <div className="lg:hidden md:hidden mt-1">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`flex items-center px-3 rounded text-black-500 hover:text-black-400 z-50`}
@@ -47,7 +47,7 @@ export default function Navbar() {
             <div
               className={` ${isOpen ? 'flex-col flex' : 'hidden'
                 } 
-                h-auto w-screen absolute px-1 left-0 top-20 divide-y divide-zinc-200 border-y border-zinc-200 bg-white dark:bg-zinc-900 z-10 transition-all duration-500 ease-in-out
+                h-auto w-screen absolute px-1 left-0 top-20 divide-y divide-zinc-200 border-y border-zinc-200 bg-white dark:bg-neutral-900 z-10 transition-all duration-500 ease-in-out
                 `}
             >
               {LinkItem.map((item, index) => (
